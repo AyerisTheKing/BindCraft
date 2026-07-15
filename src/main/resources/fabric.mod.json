@@ -11,12 +11,16 @@
 	"icon": "assets/bindcraft/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"client": [
+			"com.ayeristheking.bindcraft.BindCraftClient"
+		],
 		"main": [
 			"com.ayeristheking.bindcraft.BindCraft"
 		]
 	},
 	"mixins": [
-		"bindcraft.mixins.json"
+		"bindcraft.mixins.json",
+		"bindcraft.client.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",
