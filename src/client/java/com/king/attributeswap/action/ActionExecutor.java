@@ -4,7 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.Hand;
 
-import com.king.attributeswap.mixin.PlayerInventoryAccessor;
+import com.ayeristheking.bindcraft.mixin.PlayerInventoryAccessor;
 
 import java.util.List;
 
