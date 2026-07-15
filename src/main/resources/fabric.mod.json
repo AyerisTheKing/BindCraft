@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "bindcraft",
+	"version": "${version}",
+	"name": "BindCraft",
+	"description": "BindCraft is a client-side Fabric mod for Minecraft 1.21.11 that expands the vanilla keybinding system with customizable action sequences, profiles, and advanced key combinations.",
+	"authors": [
+		"AyerisTheKing"
+	],
+	"license": "MIT",
+	"icon": "assets/bindcraft/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.ayeristheking.bindcraft.BindCraft"
+		]
+	},
+	"mixins": [
+		"bindcraft.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

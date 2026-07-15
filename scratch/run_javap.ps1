@@ -1,0 +1,1 @@
+javap -public -classpath "C:\Users\Ayeris\.gradle\caches\fabric-loom\1.21.11\net.fabricmc.yarn.1_21_11.1.21.11+build.1-v2\minecraft-project-@-merged\classes" net.minecraft.client.option.KeyBinding > javap_output.txt

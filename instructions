@@ -1,0 +1,50 @@
+From now on, maintain CHANGELOG.md automatically. this is only for project BindCraft minecraft mod for fabric 1.21.11
+
+Rules:
+
+1. Every completed task, bug fix, refactor, optimization or feature MUST be recorded in CHANGELOG.md.
+
+2. Group changes under the current version heading.
+
+3. NEVER change the mod version automatically.
+
+4. NEVER edit:
+
+- gradle.properties
+- fabric.mod.json
+- build.gradle
+  version fields unless explicitly instructed.
+
+5. The project owner is the only person who decides when a new version is released.
+
+6. When the version changes, create a new section in CHANGELOG.md, but only after explicit instruction.
+
+7. Use this format:
+
+# Changelog
+
+## 0.1.0-alpha
+
+### Added
+
+- ...
+
+### Changed
+
+- ...
+
+### Fixed
+
+- ...
+
+### Improved
+
+- ...
+
+8. New changes must always be appended to the current version section.
+
+9. Never remove old entries.
+
+10. Keep the changelog concise and professional.
+
+11. Every completed coding task must immediately update CHANGELOG.md.

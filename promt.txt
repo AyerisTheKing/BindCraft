@@ -1,0 +1,489 @@
+this is mod info, verify with project/ if something is different you need to correcct it with mod info, also you can rewrite functions and files if they not properly writed:
+==========================================================
+GENERAL INFORMATION
+==========================================================
+
+Mod name:
+AttributeSwap
+
+Minecraft version:
+1.21.11
+
+Loader:
+Fabric
+
+Language:
+Java 21
+
+Build system:
+Gradle
+
+Mappings:
+Yarn (latest for Minecraft 1.21.11)
+
+The mod MUST compile and work ONLY on Minecraft 1.21.11 Fabric.
+
+Do NOT implement Forge compatibility.
+
+==========================================================
+PROJECT GOAL
+==========================================================
+
+This is NOT a cheat client.
+
+This is NOT an autoclicker.
+
+This is NOT a macro mod.
+
+The purpose of the mod is to extend Minecraft keybindings by allowing one key or one key combination to execute several client-side actions in sequence.
+
+Think of it as an advanced replacement for Minecraft Controls.
+
+The user creates custom bindings.
+
+Each binding consists of:
+
+Trigger
+↓
+
+One or more Actions
+
+Example:
+
+Mouse5
+
+↓
+
+Select hotbar slot 7
+
+↓
+
+Right Click
+
+↓
+
+Return to previous slot
+
+Another example:
+
+CTRL + R
+
+↓
+
+Select slot 1
+
+↓
+
+Left Click
+
+↓
+
+Select previous slot
+
+==========================================================
+MAIN FEATURES
+==========================================================
+
+The mod must support:
+
+• Multiple profiles
+
+Example:
+
+Default
+
+PvP
+
+Crystal
+
+Builder
+
+Each profile stores completely independent bindings.
+
+==========================================================
+
+Each profile contains folders.
+
+Example:
+
+Minecraft Controls
+
+Custom Bindings
+
+Inventory
+
+PvP
+
+Utility
+
+Folders can be:
+
+Enabled / Disabled
+
+Expanded / Collapsed
+
+Exported
+
+Imported
+
+==========================================================
+
+Each Binding contains:
+
+UUID
+
+Name
+
+Enabled
+
+Trigger
+
+List<Action>
+
+==========================================================
+
+Trigger
+
+Initially support only:
+
+Single keyboard key
+
+Single mouse button
+
+Keyboard combination
+
+Examples:
+
+R
+
+Mouse5
+
+CTRL + R
+
+SHIFT + Mouse4
+
+Future trigger types must be easy to add.
+
+==========================================================
+
+Actions
+
+Initial action list:
+
+Select Hotbar Slot
+
+Select Previous Slot
+
+Left Click
+
+Right Click
+
+Delay (ticks)
+
+Send Chat Message
+
+Run Client Command
+
+Future actions must be easy to add.
+
+==========================================================
+GUI
+==========================================================
+
+The mod opens by pressing:
+
+L
+
+The GUI should feel like vanilla Minecraft.
+
+No modern rounded UI.
+
+No transparent Windows style.
+
+Use vanilla widgets.
+
+Window layout:
+
+----------------------------------------------------------
+
+Left panel
+
+Profiles
+
++ button
+
+Rename
+
+Delete
+
+----------------------------------------------------------
+
+Right panel
+
+Profile Name
+
+Export button
+
+Import button
+
+New Folder button
+
+----------------------------------------------------------
+
+Folder
+
+▼ Minecraft Controls
+
+▼ Custom Bindings
+
+▼ PvP
+
+Each folder shows:
+
+Enabled toggle
+
+Name
+
+Binding count
+
+Expand/Collapse
+
+----------------------------------------------------------
+
+Binding Row
+
+Enabled toggle
+
+Binding Name
+
+Trigger
+
+Edit button
+
+Delete button
+
+----------------------------------------------------------
+
+Binding Editor
+
+Binding name
+
+Enabled toggle
+
+Trigger selector
+
+Action list
+
+Add Action
+
+Move Up
+
+Move Down
+
+Delete Action
+
+==========================================================
+JSON STORAGE
+==========================================================
+
+Every profile is stored separately.
+
+Example:
+
+config/
+
+attributeswap/
+
+profile-Default.json
+
+profile-PvP.json
+
+profile-Crystal.json
+
+Example JSON:
+
+{
+    "formatVersion":1,
+
+    "profileVersion":1,
+
+    "name":"Default",
+
+    "folders":[
+        ...
+    ]
+}
+
+Binding example
+
+{
+    "name":"Totem Swap",
+
+    "enabled":true,
+
+    "trigger":{
+
+        "type":"KEY_COMBINATION",
+
+        "keys":[
+            "LEFT_CONTROL",
+            "R"
+        ]
+    },
+
+    "actions":[
+
+        {
+
+            "type":"SELECT_SLOT",
+
+            "parameters":{
+
+                "slot":9
+
+            }
+
+        },
+
+        {
+
+            "type":"RIGHT_CLICK"
+
+        },
+
+        {
+
+            "type":"SELECT_PREVIOUS_SLOT"
+
+        }
+
+    ]
+}
+
+==========================================================
+PROJECT STRUCTURE
+==========================================================
+
+Keep project small.
+
+Avoid unnecessary classes.
+
+Current maximum:
+
+One package may contain no more than five files before creating a subpackage.
+
+Preferred structure:
+
+input/
+
+InputKey.java
+
+KeyCombination.java
+
+InputManager.java
+
+action/
+
+Action.java
+
+ActionType.java
+
+ActionExecutor.java
+
+binding/
+
+Binding.java
+
+BindingManager.java
+
+profile/
+
+Profile.java
+
+ProfileFolder.java
+
+ProfileManager.java
+
+storage/
+
+JsonStorage.java
+
+gui/
+
+AttributeSwapScreen.java
+
+ProfileScreen.java
+
+BindingEditorScreen.java
+
+listener/
+
+InputListener.java
+
+==========================================================
+CODING STYLE
+==========================================================
+
+Use clean Java.
+
+No temporary code.
+
+No TODO placeholders.
+
+No dead code.
+
+No duplicated logic.
+
+Comment only important parts.
+
+Use meaningful names.
+
+Avoid giant methods.
+
+==========================================================
+PERFORMANCE
+==========================================================
+
+The mod should be lightweight.
+
+Avoid polling every key every tick if Fabric/Minecraft events can be used.
+
+Avoid allocations every frame.
+
+==========================================================
+FUTURE EXPANSION
+==========================================================
+
+Architecture should allow adding:
+
+New Action types
+
+New Trigger types
+
+New folders
+
+New profile properties
+
+Without rewriting existing code.
+
+==========================================================
+IMPORTANT
+==========================================================
+
+The mod must remain fully client-side.
+
+No server plugin.
+
+No packet modification.
+
+No combat cheats.
+
+No pathfinding.
+
+No automation outside the actions explicitly configured by the user.
+
+The implementation should feel like an advanced keybinding manager rather than a hacked client.
+
+Develop the project step by step.
+
+Each development stage must produce working, compilable code before moving to the next stage.
